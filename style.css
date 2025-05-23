@@ -1,0 +1,261 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    transition: background 0.5s ease-in-out;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 900px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+h1, h2, h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.weather-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.weather-card img {
+    width: 64px;
+    height: 64px;
+}
+
+.hourly-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.hour-block {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem;
+    border-radius: 8px;
+    min-width: 120px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Fondos dinámicos */
+body.sunny {
+    background: linear-gradient(to right, #fceabb, #f8b500);
+}
+
+body.cloudy {
+    background: linear-gradient(to right, #bdc3c7, #2c3e50);
+}
+
+body.rainy {
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+}
+
+body.stormy {
+    background: linear-gradient(to right, #232526, #414345);
+}
+
+body.snowy {
+    background: linear-gradient(to right, #83a4d4, #b6fbff);
+}
+
+body.night {
+    background: linear-gradient(to right, #141e30, #243b55);
+}
+
+#forecast {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+/* Modal fondo oscuro con blur */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    pointer-events: auto;
+    
+}
+
+/* Contenido modal estilo glassmorphism */
+.modal-content {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    max-width: 520px;
+    width: 90%;
+    color: #fff;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    
+}
+
+/* Títulos */
+.modal-content h3 {
+    margin-top: 0;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+.modal-content h4 {
+    margin: 1.5rem 0 1rem 0;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+/* Botón cerrar - estilo minimalista con hover */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close:hover {
+    color: #ff6b6b;
+}
+
+/* Navegación modal */
+.modal-nav {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-nav button {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    border: none;
+    padding: 0.7rem 1.6rem;
+    color: white;
+    font-weight: 600;
+    border-radius: 40px;
+    box-shadow: 0 4px 15px rgba(110, 142, 251, 0.6);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    user-select: none;
+}
+
+.modal-nav button:hover {
+    background: linear-gradient(135deg, #557de8, #8659c6);
+    transform: scale(1.05);
+}
+
+.modal-nav button:active {
+    transform: scale(0.95);
+}
+
+/* Scroll para las horas dentro del modal */
+.modal-content > div[style] {
+    max-height: 220px;
+    overflow-y: auto;
+    margin-top: 1rem;
+    padding-right: 0.4rem;
+    text-align: left;
+    scrollbar-width: thin;
+    scrollbar-color: #a777e3 transparent;
+}
+
+.modal-content > div[style]::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content > div[style]::-webkit-scrollbar-thumb {
+    background-color: #a777e3;
+    border-radius: 3px;
+}
+
+/* Parrafos horas */
+.modal-content p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    color: #f0f0f0dd;
+}
+
+/* Imagen del clima más grande y con sombra */
+.modal-content img {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+}
+
+.modal-content .hourly-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.7rem;
+    margin-top: 1rem;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 0.3rem;
+}
+
+.hour-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #eee;
+    box-shadow: 0 0 8px rgb(167 119 227 / 0.4);
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.hour-card img {
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+}
