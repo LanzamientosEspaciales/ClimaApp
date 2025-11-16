@@ -73,27 +73,34 @@ function showCurrentWeather(data) {
             <h2>${loc.name}, ${loc.country}</h2>
             <img src="https:${w.condition.icon}" alt="${w.condition.text}">
             <p><strong>${w.condition.text}</strong></p>
+
             <p>🌡️ <strong>Temp:</strong> ${w.temp_c}°C (Sensación: ${w.feelslike_c}°C)</p>
-            <p>💧 <strong>Humedad:</strong> ${w.humidity}% | 🌬️ <strong>Viento:</strong> ${w.wind_kph} km/h (${w.wind_dir})</p>
-            <p>🌥️ <strong>Nubosidad:</strong> ${w.cloud}% | 🌞 <strong>UV:</strong> ${w.uv}</p>
-            <p>👁️ <strong>Visibilidad:</strong> ${w.vis_km} km | 📌 <strong>Presión:</strong> ${w.pressure_mb} hPa</p>
+
+            <p>💧 <strong>Humedad:</strong> ${w.humidity}% 
+            | 🌬️ <strong>Viento:</strong> ${w.wind_kph} km/h (${w.wind_dir})</p>
+
+            <p>💨 <strong>Ráfagas:</strong> ${w.gust_kph} km/h</p>
+
+            <p>🌥️ <strong>Nubosidad:</strong> ${w.cloud}% 
+            | 🌞 <strong>UV:</strong> ${w.uv}</p>
+
+            <p>👁️ <strong>Visibilidad:</strong> ${w.vis_km} km 
+            | 📌 <strong>Presión:</strong> ${w.pressure_mb} hPa</p>
+
             <p><small>Última actualización: ${w.last_updated}</small></p>
         </div>
     `;
-    // Seleccionar la etiqueta link que contiene el favicon
-let link = document.querySelector("link[rel~='icon']");
 
-if (!link) {
-  // Si no existe, crearla
-  link = document.createElement('link');
-  link.rel = 'icon';
-  document.getElementsByTagName('head')[0].appendChild(link);
+    // Cambiar favicon según el clima
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    link.href = `https:${w.condition.icon}`;
 }
 
-// Cambiar la ruta del favicon
-link.href = `https:${w.condition.icon}`;
-
-}
 
 function showAstroData(day) {
     const a = day.astro;
