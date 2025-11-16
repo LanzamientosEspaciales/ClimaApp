@@ -76,9 +76,9 @@ function showCurrentWeather(data) {
 
             <p>🌡️ <strong>Temp:</strong> ${w.temp_c}°C (Sensación: ${w.feelslike_c}°C)</p>
 
-            <p>💧 <strong>Humedad:</strong> ${w.humidity}% 
-            | 🌬️ <strong>Viento:</strong> ${w.wind_kph} km/h (${w.wind_dir})</p>
+            <p>💧 <strong>Humedad:</strong> ${w.humidity}% </p>
 
+            <p>🌬️ <strong>Viento:</strong> ${w.wind_kph} km/h (${w.wind_dir})</p>
             <p>💨 <strong>Ráfagas:</strong> ${w.gust_kph} km/h</p>
 
             <p>🌥️ <strong>Nubosidad:</strong> ${w.cloud}% 
